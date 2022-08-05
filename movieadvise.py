@@ -77,7 +77,7 @@ def get_movie_advise(name, us_in_lim, search_type):
             advise.append(movie["Name"])
         return advise
 
- #Makes http request to OMDb API to get suggested movie describtion
+ #Makes http request to OMDb API to get suggested movie description
     def get_info_from_OMDb(title, search_type, k_o = API_K_OMDb):
         if search_type[0] == 1:
             search_type_l = "movie"
@@ -98,7 +98,7 @@ def get_movie_advise(name, us_in_lim, search_type):
         return info_from_OMDb
 
 
- #Main function
+ #Main 
     extract_movie_titles = get_info_from_tastedive(name, search_type)
     movie_count = 0
     result_suggestions = []
@@ -121,12 +121,3 @@ def get_movie_advise(name, us_in_lim, search_type):
         result_file.write("The short descripton of plot is - " + info_from_OMDb["Extendent"][5] + "\n" * 2)
         result_suggestions.append(result_file)
     return(result_suggestions)
-
-
-
-
-
-
-
-
-
