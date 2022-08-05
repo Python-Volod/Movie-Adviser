@@ -6,8 +6,7 @@ from tkinter import  ttk
 # Import back-end file
 from movieadvise import get_movie_advise
 
-
-#Flags that indicate if required information is filled or not
+#Flags that indicate if required information is filled
 search_limit_flag = 0
 chechbuttons_flag = 0
 
@@ -65,7 +64,7 @@ movie_type_check.grid(column = 0, pady= 5, row= 0, sticky="W")
 series_type_check.grid(column = 0, pady = 5, row = 1, sticky="W")
 
 
-# Text with current state of operations and gif
+# Text with current state of operations 
 text_im_widged = ttk.Frame(main_window)
 text_state = ttk.Label(text_im_widged ,text="Fill in all fields with appropriate information and press search" , borderwidth= 3 , relief = "ridge")
 text_state.grid(column = 0, row =0 , sticky = "N")
@@ -80,9 +79,6 @@ def destroy_initial_page():
 
 
 
-# Dictionary with information needed for tag's /* To change font depending on genre */
-
-tag_info_dict = {}
 
 # Execute button and function, performes search based on input values /* Python_B name is a tribute to my friend */ 
 def Python_B():
@@ -91,10 +87,8 @@ def Python_B():
         # Creates a list of movie suggestions and stores them in result, then formes one string object with text
         result = get_movie_advise(search_name.get(), search_limit.get(), (movie_type.get(), series_type.get()))
         result_text = ""
-        # Is used as key for tag_info_dict
         answer_count = 0
         for tape in result:
-            tag_info_dict[answer_count] = (len(tape.get_text()), tape.get_genre().split(",")[0])
             result_text += tape.get_text()
             answer_count += 1
         # Creates Frame to hold text widget and a scrollbar
@@ -113,9 +107,6 @@ def Python_B():
     else:
         text_state["text"] = "Nessesary information is not yet fielded"
 execute_button = ttk.Button(text= "Execute" , state="active" , command = Python_B)
-
-
-
 
 
 # Geometry 
